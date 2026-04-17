@@ -36,7 +36,7 @@ for DB in ${POSTGRES_DBS}; do
     pg_dumpall -l "${DB}" ${POSTGRES_EXTRA_OPTS} | gzip > "${FILE}"
   else
     echo "Creating dump of ${DB} database from ${POSTGRES_HOST}..."
-    pg_dump -d "${DB}" -f "${FILE}" ${POSTGRES_EXTRA_OPTS}
+    pg_dump -d "${DB}" -f "${FILE}" "${POSTGRES_EXTRA_OPTS}"
   fi
   #Copy (hardlink) for each entry
   if [ -d "${FILE}" ]; then
